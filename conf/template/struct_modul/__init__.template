@@ -59,14 +59,14 @@ bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
 
 try:
-    from app_server.views.base import base_blueprint
-    from app_server.views.user import user_blueprint
+    from app_server.views.base import base
+    from app_server.views.user import user
 except ImportError as e:
     msg = "\n{0}\n{1}\n".format(__file__, e)
     sys.exit(msg)  # Force close python ATS ##################################
 
-app.register_blueprint(base_blueprint)
-app.register_blueprint(user_blueprint)
+app.register_module(base)
+app.register_module(user)
 
 try:
     from app_server.models.model_user import User

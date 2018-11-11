@@ -17,10 +17,11 @@
 #
 
 import sys
-from os.path import dirname, realpath
 from inspect import stack
 
 try:
+    from pathlib import Path
+
     from flask_pro.structure_selector import StructureSelector
     from flask_pro.divisional.divisional_builder import DivisionalBuilder
     from flask_pro.functional.functional_builder import FunctionalBuilder
@@ -70,9 +71,9 @@ class GenPro(object):
     VERBOSE = 'FLASK_PRO::GEN_PRO'
     __TEMPLATE_DIR = '/../../conf/template'
     __STRUCTURAL_SCHEMES = {
-        StructureSelector.Functional : 'struct_function.json',
-        StructureSelector.Divisional : 'struct_division.json',
-        StructureSelector.Modular : 'struct_module.json'
+        StructureSelector.Functional: 'struct_function.json',
+        StructureSelector.Divisional: 'struct_division.json',
+        StructureSelector.Modular: 'struct_module.json'
     }
 
     def __init__(self, verbose=False):
@@ -121,9 +122,9 @@ class GenPro(object):
             self.__builder = ModularBuilder()
         else:
             return status
-        local_dir = dirname(realpath(__file__))
+        current_dir = Path(__file__).resolve().parent
         structure_schema_path = "{0}{1}/{2}".format(
-            local_dir, GenPro.__TEMPLATE_DIR,
+            current_dir, GenPro.__TEMPLATE_DIR,
             GenPro.__STRUCTURAL_SCHEMES[structure_type]
         )
         status = self.__builder.generate_structure(

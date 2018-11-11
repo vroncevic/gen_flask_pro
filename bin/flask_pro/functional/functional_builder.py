@@ -52,7 +52,7 @@ class FunctionalBuilder(Builder):
     """
 
     __slots__ = ('VERBOSE')
-    VERBOSE = 'FLASK_PRO::FUNCTIONAL_BUILDER'
+    VERBOSE = 'FLASK_PRO::FUNCTIONAL::FUNCTIONAL_BUILDER'
 
     def __init__(self, verbose=False):
         """

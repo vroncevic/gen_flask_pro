@@ -17,10 +17,11 @@
 #
 
 import sys
-from os.path import dirname, realpath
 from inspect import stack
 
 try:
+    from pathlib import Path
+
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
@@ -47,15 +48,15 @@ class ReadTemplate(object):
                 __slots__ - Setting class slots
                 VERBOSE - Console text indicator for current process-phase
                 __TEMPLATE_DIR - Prefix path to templates
-                __template - Absolute template file path
+                __template_dir - Absolute template dir path
             method:
                 __init__ - Initial constructor
                 read - Read a template and return a content or None
     """
 
-    __slots__ = ('VERBOSE', '__TEMPLATE_DIR', '__template')
+    __slots__ = ('VERBOSE', '__TEMPLATE_DIR', '__template_dir')
     VERBOSE = 'GEN_PRO::READ_TEMPLATE'
-    __TEMPLATE_DIR = '../../conf/template'
+    __TEMPLATE_DIR = '../../conf/template/'
 
     def __init__(self, verbose=False):
         """
@@ -65,9 +66,9 @@ class ReadTemplate(object):
             :exceptions: None
         """
         verbose_message(ReadTemplate.VERBOSE, verbose, 'Initial reader')
-        local_dir = dirname(realpath(__file__))
-        self.__template = "{0}{1}".format(
-            local_dir, ReadTemplate.__TEMPLATE_DIR
+        current_dir = Path(__file__).parent
+        self.__template_dir = "{0}{1}".format(
+            current_dir, ReadTemplate.__TEMPLATE_DIR
         )
 
     def read(self, template_module):
@@ -86,13 +87,10 @@ class ReadTemplate(object):
             raise ATSBadCallError(module_msg)
         if not isinstance(template_module, str):
             raise ATSTypeError(module_msg)
-        try:
-            file_path = "{0}/{1}".format(self.__template, template_module)
-            template_file = open(file_path, "r")
-            module_content = template_file.read()
-        except IOError as e:
-            print("I/O error({0}): {1}".format(e.errno, e.strerror))
-        else:
-            template_file.close()
+        file_path = "{0}/{1}".format(self.__template_dir, template_module)
+        if file_path:
+            with open(file_path, "r") as template_file:
+                module_content = template_file.read()
+                template_file.close()
         return module_content
 

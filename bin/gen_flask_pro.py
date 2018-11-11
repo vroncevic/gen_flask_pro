@@ -87,7 +87,6 @@ class GenFlaskPro(CfgBase):
         status = False
         if self.tool_status:
             num_of_args = len(sys.argv)
-            self.show_base_info(verbose=verbose)
             if num_of_args > 1:
                 option = sys.argv[1]
                 if option not in GenFlaskPro.__OPS:

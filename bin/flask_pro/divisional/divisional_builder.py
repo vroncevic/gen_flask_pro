@@ -52,7 +52,7 @@ class DivisionalBuilder(Builder):
     """
 
     __slots__ = ('VERBOSE')
-    VERBOSE = 'FLASK_PRO::DIVISIONAL_BUILDER'
+    VERBOSE = 'FLASK_PRO::DIVISIONAL::DIVISIONAL_BUILDER'
 
     def __init__(self):
         """

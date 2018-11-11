@@ -1,188 +1,189 @@
 {
-  "app_server_package": {
-	"modules": [
-	  {
-		"name": "__init__.py"
-	  }
-	],
-	"base_package": {
-	  "static_folder": {
-		"files": [
-		  {
-			"name": "base.css"
-		  },
-		  {
-			"name": "base.js"
-		  },
-		  {
-			"name": "favicon.ico"
-		  }
-		]
-	  },
-	  "templates_folder": {
-		"errors_folder": {
-		  "files": [
-			{
-			  "name": "401.html"
-			},
-			{
-			  "name": "403.html"
-			},
-			{
-			  "name": "404.html"
-			},
-			{
-			  "name": "500.html"
-			}
-		  ]
-		},
-		"files": [
-		  {
-			"name": ""
-		  },
-		  {
-			"name": ""
-		  },
-		  {
-			"name": ""
-		  },
-		  {
-			"name": ""
-		  },
-		  {
-			"name": ""
-		  },
-		  {
-			"name": ""
-		  }
-		]
-	  },
-	  "modules": [
-		{
-		  "name": "__init__.py"
-		},
-		{
-		  "name": "forms.py"
-		},
-		{
-		  "name": "views.py"
-		}
-	  ]
-	},
-	"configuration_package": {
-	  "modules": [
-		{
-		  "name": "__init__.py"
-		},
-		{
-		  "name": "base_config.py"
-		},
-		{
-		  "name": "development_config.py"
-		},
-		{
-		  "name": "production_config.py"
-		},
-		{
-		  "name": "testing_config.py"
-		}
-	  ]
-	},
-	"models_package": {
-	  "modules": [
-		{
-		  "name": "__init__.py"
-		},
-		{
-		  "name": "model_base.py"
-		},
-		{
-		  "name": "model_user.py"
-		}
-	  ]
-	},
-	"tests_package": {
-	  "modules": [
-		{
-		  "name": "__init__.py"
-		},
-		{
-		  "name": "base.py"
-		},
-		{
-		  "name": "helpers.py"
-		},
-		{
-		  "name": "test_config.py"
-		},
-		{
-		  "name": "test_main.py"
-		},
-		{
-		  "name": "test_user.py"
-		}
-	  ]
-	},
-	"user_package": {
-	  "static_folder": {
-		"files": []
-	  },
-	  "templates_folder": {
-		"files": [
-		  {
-			"name": "administration.html"
-		  },
-		  {
-			"name": "login.html"
-		  },
-		  {
-			"name": "members.html"
-		  },
-		  {
-			"name": "register.html"
-		  },
-		  {
-			"name": "user.html"
-		  }
-		]
-	  },
-	  "modules": [
-		{
-		  "name": "__init__.py"
-		},
-		{
-		  "name": "forms.py"
-		},
-		{
-		  "name": "views.py"
-		}
-	  ]
-	}
-  },
-  "manage_commands_package": {
-	"modules": [
-	  {
-		"name": "__init__.py"
-	  },
-	  {
-		"name": "create_data.py"
-	  },
-	  {
-		"name": "create_database.py"
-	  },
-	  {
-		"name": "create_superuser.py"
-	  },
-	  {
-		"name": "drop_database.py"
-	  },
-	  {
-		"name": "run_coverage.py"
-	  },
-	  {
-		"name": "run_test.py"
-	  }
-	]
-  },
-  "manage_module": "manage.py"
+    "app_server_package": {
+        "modules": [
+            {
+                "name": "__init__.template"
+            }
+        ],
+        "base_package": {
+            "static_folder": {
+                "files": [
+                    {
+                        "name": "base.css"
+                    },
+                    {
+                        "name": "base.js"
+                    },
+                    {
+                        "name": "favicon.ico"
+                    }
+                ]
+            },
+            "templates_folder": {
+                "errors_folder": {
+                    "files": [
+                        {
+                            "name": "401.html"
+                        },
+                        {
+                            "name": "403.html"
+                        },
+                        {
+                            "name": "404.html"
+                        },
+                        {
+                            "name": "500.html"
+                        }
+                    ]
+                },
+                "files": [
+                    {
+                        "name": ""
+                    },
+                    {
+                        "name": ""
+                    },
+                    {
+                        "name": ""
+                    },
+                    {
+                        "name": ""
+                    },
+                    {
+                        "name": ""
+                    },
+                    {
+                        "name": ""
+                    }
+                ]
+            },
+            "modules": [
+                {
+                    "name": "__init__.template"
+                },
+                {
+                    "name": "forms.template"
+                },
+                {
+                    "name": "views.template"
+                }
+            ]
+        },
+        "configuration_package": {
+            "modules": [
+                {
+                    "name": "__init__.template"
+                },
+                {
+                    "name": "base_config.template"
+                },
+                {
+                    "name": "development_config.template"
+                },
+                {
+                    "name": "production_config.template"
+                },
+                {
+                    "name": "testing_config.template"
+                }
+            ]
+        },
+        "models_package": {
+            "modules": [
+                {
+                    "name": "__init__.template"
+                },
+                {
+                    "name": "model_base.template"
+                },
+                {
+                    "name": "model_user.template"
+                }
+            ]
+        },
+        "tests_package": {
+            "modules": [
+                {
+                    "name": "__init__.template"
+                },
+                {
+                    "name": "base.template"
+                },
+                {
+                    "name": "helpers.template"
+                },
+                {
+                    "name": "test_config.template"
+                },
+                {
+                    "name": "test_main.template"
+                },
+                {
+                    "name": "test_user.template"
+                }
+            ]
+        },
+        "user_package": {
+            "static_folder": {
+                "files": []
+            },
+            "templates_folder": {
+                "files": [
+                    {
+                        "name": "administration.html"
+                    },
+                    {
+                        "name": "login.html"
+                    },
+                    {
+                        "name": "members.html"
+                    },
+                    {
+                        "name": "register.html"
+                    },
+                    {
+                        "name": "user.html"
+                    }
+                ]
+            },
+            "modules": [
+                {
+                    "name": "__init__.template"
+                },
+                {
+                    "name": "forms.template"
+                },
+                {
+                    "name": "views.template"
+                }
+            ]
+        }
+    },
+    "manage_commands_package": {
+        "modules": [
+            {
+                "name": "__init__.template"
+            },
+            {
+                "name": "create_data.template"
+            },
+            {
+                "name": "create_database.template"
+            },
+            {
+                "name": "create_superuser.template"
+            },
+            {
+                "name": "drop_database.template"
+            },
+            {
+                "name": "run_coverage.template"
+            },
+            {
+                "name": "run_test.template"
+            }
+        ]
+    },
+    "manage_module": "manage.template"
 }
+

@@ -1,4 +1,4 @@
 
 $( document ).ready(function() {
-	console.log('Sanity Check!');
+    console.log('Sanity Check!');
 });

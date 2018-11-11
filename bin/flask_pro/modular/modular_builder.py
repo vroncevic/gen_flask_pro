@@ -52,7 +52,7 @@ class ModularBuilder(Builder):
     """
 
     __slots__ = ('VERBOSE')
-    VERBOSE = 'FLASK_PRO::MODULAR_BUILDER'
+    VERBOSE = 'FLASK_PRO::MODULAR::MODULAR_BUILDER'
 
     def __init__(self, verbose=False):
         """

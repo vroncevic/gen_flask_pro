@@ -16,8 +16,25 @@
 # with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
+import sys
+
+try:
+    import coverage
+    from flask_migrate import Migrate, MigrateCommand
+    from flask_script import Manager
+
+    from manage_commands.create_database import CreateDatabase
+    from manage_commands.drop_database import DropDatabase
+    from manage_commands.create_data import CreateData
+    from manage_commands.create_superuser import CreateSuperUser
+    from manage_commands.run_coverage import RunCoverage
+    from manage_commands.run_test import RunTest
+except ImportError as e:
+    msg = "\n{0}\n{1}\n".format(__file__, e)
+    sys.exit(msg)  # Force close python ATS ##################################
+
 __author__ = "Vladimir Roncevic"
-__copyright__ = "Copyright 2017, Free software to use and distributed it."
+__copyright__ = "Copyright 2018, Free software to use and distributed it."
 __credits__ = ["Vladimir Roncevic"]
 __license__ = "GNU General Public License (GPL)"
 __version__ = "1.0.0"
@@ -25,29 +42,25 @@ __maintainer__ = "Vladimir Roncevic"
 __email__ = "elektron.ronca@gmail.com"
 __status__ = "Updated"
 
-import coverage
-from flask_migrate import Migrate, MigrateCommand
-from flask_script import Manager
-from manage_commands.create_database import CreateDatabase
-from manage_commands.drop_database import DropDatabase
-from manage_commands.create_data import CreateData
-from manage_commands.create_superuser import CreateSuperUser
-from manage_commands.run_coverage import RunCoverage
-from manage_commands.run_test import RunTest
+
 
 COV = coverage.coverage(
-	branch=True,
-	include="app_server/*",
-	omit=[
-		"app_server/tests/*",
-		"app_server/configuration/testing_config.py",
-		"app_server/*/__init__.py"
-	]
+    branch=True,
+    include="app_server/*",
+    omit=[
+        "app_server/tests/*",
+        "app_server/configuration/testing_config.py",
+        "app_server/*/__init__.py"
+    ]
 )
 
 COV.start()
 
-from app_server import app, db
+try:
+    from app_server import app, db
+except ImportError as e:
+    msg = "\n{0}\n{1}\n".format(__file__, e)
+    sys.exit(msg)  # Force close python ATS ##################################
 
 migrate = Migrate(app, db)
 manager = Manager(app)
@@ -67,4 +80,6 @@ manager.add_command("coverage", RunCoverage(COV))
 # python manage.py runserver
 
 if __name__ == "__main__":
-	manager.run()
+
+    manager.run()
+

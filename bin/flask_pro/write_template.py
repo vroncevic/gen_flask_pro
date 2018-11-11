@@ -77,6 +77,7 @@ class WriteTemplate(object):
             :exceptions: ATSBadCallError | ATSTypeError
         """
         current_dir, status, func = getcwd(), False , stack()[0][3]
+        module_file_name, template = None, None
         module_content_txt = 'Argument: expected module_content <str> object'
         mod_cont_msg = "{0} {1} {2}".format('def', func, module_content_txt)
         module_name_txt = 'Argument: expected module_name <str> object'
@@ -91,20 +92,17 @@ class WriteTemplate(object):
             raise ATSTypeError(mod_name_msg)
         module_file_name = "{0}/{1}".format(current_dir, file_name)
         module = {
-            "mod"  : "{0}".format(module_name),
+            "mod": "{0}".format(module_name),
             "modlc": "{0}".format(module_name.lower()),
-            "date" : "{0}".format(date.today()),
-            "year" : "{0}".format(date.today().year)
+            "date": "{0}".format(date.today()),
+            "year": "{0}".format(date.today().year)
         }
-        try:
+        if module_file_name:
             template = Template(module_content)
-            module_file = open(module_file_name, 'w')
-            module_file.write(template.substitute(module))
-        except (IOError, KeyError) as e:
-            print("I/O error({0}): {1}".format(e.errno, e.strerror))
-        else:
-            module_file.close()
-            chmod(path=module_file_name, mode=0o666)
-            status = True
+            with open(module_file_name, 'w') as module_file:
+                module_file.write(template.substitute(module))
+                module_file.close()
+                chmod(path=module_file_name, mode=0o666)
+                status = True
         return True if status else False
 
