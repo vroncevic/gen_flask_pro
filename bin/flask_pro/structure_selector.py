@@ -54,10 +54,10 @@ class StructureSelector(object):
     VERBOSE = 'FLASK_PRO::STRUCTURE_SELECTOR'
     Functional, Divisional, Modular, Cancel = range(4)
     __STRUCTURES = {
-        Functional : "Functional structure",
-        Divisional : "Divisional structure",
-        Modular : "Module structure",
-        Cancel : "Cancel"
+        Functional: 'Functional structure',
+        Divisional: 'Divisional structure',
+        Modular: 'Modular structure',
+        Cancel: 'Cancel'
     }
 
     @classmethod

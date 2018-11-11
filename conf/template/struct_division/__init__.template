@@ -16,8 +16,8 @@
 # with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-import sys
 import os
+import sys
 
 try:
     from flask import Flask, render_template
@@ -39,11 +39,8 @@ __maintainer__ = "Vladimir Roncevic"
 __email__ = "elektron.ronca@gmail.com"
 __status__ = "Updated"
 
-app = Flask(
-    __name__,
-    template_folder="templates",
-    static_folder="static"
-)
+
+app = Flask(__name__)
 
 app_settings = os.getenv(
     "APP_SETTINGS",
@@ -59,8 +56,8 @@ bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
 
 try:
-    from app_server.views.base import base_blueprint
-    from app_server.views.user import user_blueprint
+    from app_server.base.views import base_blueprint
+    from app_server.user.views import user_blueprint
 except ImportError as e:
     msg = "\n{0}\n{1}\n".format(__file__, e)
     sys.exit(msg)  # Force close python ATS ##################################
