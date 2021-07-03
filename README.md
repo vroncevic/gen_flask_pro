@@ -1,189 +1,119 @@
-# Generator - Flask project
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_flask_pro/dev/docs/gen_flask_pro_logo.png" width="25%">
 
-The README is used to introduce the tool and provide instructions on
-how to install the tool, any machine dependencies it may have and any
-other information that should be provided before the tool is installed.
+# Generate Flask Project
 
-### INSTALLATION
+**gen_flask_pro** is tool for generation of flask project.
 
-To install this tool type the following:
+Developed in **[python](https://www.python.org/)** code: **100%**.
 
+The README is used to introduce the modules and provide instructions on
+how to install the modules, any machine dependencies it may have and any
+other information that should be provided before the modules are installed.
+
+![Python package](https://github.com/vroncevic/gen_flask_pro/workflows/Python%20package%20gen_flask_pro/badge.svg?branch=master) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_flask_pro.svg)](https://github.com/vroncevic/gen_flask_pro/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_flask_pro.svg)](https://github.com/vroncevic/gen_flask_pro/graphs/contributors)
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Installation](#installation)
+    - [Install using pip](#install-using-pip)
+    - [Install using setuptools](#install-using-setuptools)
+    - [Install using docker](#install-using-docker)
+- [Dependencies](#dependencies)
+- [Tool structure](#tool-structure)
+- [Docs](#docs)
+- [Copyright and Licence](#copyright-and-licence)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+### Installation
+
+![Install Python2 Package](https://github.com/vroncevic/gen_flask_pro/workflows/Install%20Python2%20Package%20gen_flask_pro/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_flask_pro/workflows/Install%20Python3%20Package%20gen_flask_pro/badge.svg?branch=master)
+
+Currently there are three ways to install tool:
+* Install process based on pip
+* Install process based on setup.py (setuptools)
+* Install process based on docker mechanism
+
+##### Install using pip
+
+Python package is located at **[pypi.org](https://pypi.org/project/gen-flask-pro/)**.
+
+You can install by using pip
 ```
-cp -R ~/gen_flask_pro/bin/   /root/scripts/gen_flask_pro/ver.1.0/
-cp -R ~/gen_flask_pro/conf/  /root/scripts/gen_flask_pro/ver.1.0/
-cp -R ~/gen_flask_pro/log/   /root/scripts/gen_flask_pro/ver.1.0/
+# python2
+pip install gen-flask-pro
+# python3
+pip3 install gen-flask-pro
 ```
 
-### DEPENDENCIES
+##### Install using setuptools
 
-This tool requires these other modules and libraries:
+Navigate to release **[page](https://github.com/vroncevic/gen_flask_pro/releases/)** download and extract release archive.
 
+To install modules, locate and run setup.py with arguments
+```
+tar xvzf gen_flask_pro-x.y.z.tar.gz
+cd gen_flask_pro-x.y.z/
+# python2
+pip install -r requirements.txt
+python setup.py install_lib
+python setup.py install_data
+python setup.py install_egg_info
+# python3
+pip3 install -r requirements.txt
+python3 setup.py install_lib
+python3 setup.py install_data
+python3 setup.py install_egg_info
+```
 
-* ats_utilities https://vroncevic.github.io/ats_utilities
+##### Install using docker
+
+You can use docker to create image/container.
+
+[![gen_flask_pro docker checker](https://github.com/vroncevic/gen_flask_pro/workflows/gen_flask_pro%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_flask_pro/actions?query=workflow%3A%22gen_flask_pro+docker+checker%22)
+
+### Dependencies
+
+**gen_flask_pro** requires next modules and libraries:
+
+* [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
+
+Base flow of generation process:
+
+![alt tag](https://raw.githubusercontent.com/vroncevic/gen_flask_pro/dev/docs/gen_flask_pro_flow.png)
 
 ### Tool structure
 
-![alt tag](https://raw.githubusercontent.com/vroncevic/gen_flask_pro/dev/python-tool-docs/gen_flask_pro.png)
+**gen_flask_pro** is based on OOP:
 
-```
-.
-├── bin
-│   ├── flask_pro
-│   │   ├── divisional
-│   │   │   ├── divisional_builder.py
-│   │   │   └── __init__.py
-│   │   ├── functional
-│   │   │   ├── functional_builder.py
-│   │   │   └── __init__.py
-│   │   ├── gen_pro.py
-│   │   ├── __init__.py
-│   │   ├── modular
-│   │   │   ├── __init__.py
-│   │   │   └── modular_builder.py
-│   │   ├── project
-│   │   │   ├── __init__.py
-│   │   │   └── project_info.py
-│   │   ├── project_builder
-│   │   │   ├── base_builder.py
-│   │   │   └── __init__.py
-│   │   ├── read_template.py
-│   │   ├── structure_selector.py
-│   │   └── write_template.py
-│   ├── gen_flask_pro.py
-│   └── gen_flask_pro_run.py
-├── conf
-│   ├── gen_flask_pro.cfg
-│   ├── gen_flask_pro_util.cfg
-│   └── template
-│       ├── struct_core
-│       │   ├── manage_commands
-│       │   │   ├── create_database.template
-│       │   │   ├── create_data.template
-│       │   │   ├── create_superuser.template
-│       │   │   ├── drop_database.template
-│       │   │   ├── __init__.template
-│       │   │   ├── run_coverage.template
-│       │   │   └── run_test.template
-│       │   └── manage.template
-│       ├── struct_division
-│       │   ├── base
-│       │   │   ├── forms.template
-│       │   │   ├── __init__.template
-│       │   │   ├── static
-│       │   │   ├── templates
-│       │   │   └── views.template
-│       │   ├── configuration
-│       │   │   ├── base_config.template
-│       │   │   ├── development_config.template
-│       │   │   ├── __init__.template
-│       │   │   ├── production_config.template
-│       │   │   └── testing_config.template
-│       │   ├── __init__.template
-│       │   ├── models
-│       │   │   ├── __init__.template
-│       │   │   ├── model_base.template
-│       │   │   └── model_user.template
-│       │   ├── tests
-│       │   │   ├── base.template
-│       │   │   ├── helpers.template
-│       │   │   ├── __init__.template
-│       │   │   ├── test__config.template
-│       │   │   ├── test_main.template
-│       │   │   └── test_user.template
-│       │   └── user
-│       │       ├── forms.template
-│       │       ├── __init__.template
-│       │       ├── static
-│       │       ├── templates
-│       │       └── views.template
-│       ├── struct_division.json
-│       ├── struct_function
-│       │   ├── configuration
-│       │   │   ├── base_config.template
-│       │   │   ├── development_config.template
-│       │   │   ├── __init__.template
-│       │   │   ├── production_config.template
-│       │   │   └── testing_config.template
-│       │   ├── __init__.template
-│       │   ├── models
-│       │   │   ├── __init__.template
-│       │   │   ├── model_base.template
-│       │   │   └── model_user.template
-│       │   ├── static
-│       │   │   ├── base.css
-│       │   │   ├── base.js
-│       │   │   └── favicon.ico
-│       │   ├── templates
-│       │   │   ├── base
-│       │   │   ├── _base.html
-│       │   │   ├── errors
-│       │   │   ├── footer.html
-│       │   │   ├── header.html
-│       │   │   └── user
-│       │   ├── tests
-│       │   │   ├── base.template
-│       │   │   ├── helpers.template
-│       │   │   ├── __init__.template
-│       │   │   ├── test__config.template
-│       │   │   ├── test_main.template
-│       │   │   └── test_user.template
-│       │   └── views
-│       │       ├── base.template
-│       │       ├── __init__.template
-│       │       ├── user_login.template
-│       │       ├── user_register.template
-│       │       └── user.template
-│       ├── struct_function.json
-│       ├── struct_modul
-│       │   ├── configuration
-│       │   │   ├── base_config.template
-│       │   │   ├── development_config.template
-│       │   │   ├── __init__.template
-│       │   │   ├── production_config.template
-│       │   │   └── testing_config.template
-│       │   ├── forms
-│       │   │   ├── __init__.template
-│       │   │   ├── user_login.template
-│       │   │   └── user_register.template
-│       │   ├── __init__.template
-│       │   ├── models
-│       │   │   ├── __init__.template
-│       │   │   ├── model_base.template
-│       │   │   └── model_user.template
-│       │   ├── static
-│       │   │   ├── favicon.ico
-│       │   │   ├── main.css
-│       │   │   └── main.js
-│       │   ├── templates
-│       │   │   ├── base
-│       │   │   ├── _base.html
-│       │   │   ├── errors
-│       │   │   ├── footer.html
-│       │   │   ├── header.html
-│       │   │   └── user
-│       │   ├── tests
-│       │   │   ├── base.template
-│       │   │   ├── helpers.template
-│       │   │   ├── __init__.template
-│       │   │   ├── test__config.template
-│       │   │   ├── test_main.template
-│       │   │   └── test_user.template
-│       │   └── views
-│       │       ├── base.template
-│       │       ├── __init__.template
-│       │       └── user.template
-│       └── struct_module.json
-└── log
-    └── gen_flask_pro.log
+Generator structure:
 
 ```
 
-### COPYRIGHT AND LICENCE
+```
 
-Copyright (C) 2018 by https://vroncevic.github.io/gen_flask_pro
+### Docs
 
-This tool is free software; you can redistribute it and/or modify
-it under the same terms as Python itself, either Python version 2.7/3.4 or,
+[![Documentation Status](https://readthedocs.org/projects/gen_flask_pro/badge/?version=latest)](https://gen_flask_pro.readthedocs.io/projects/gen_flask_pro/en/latest/?badge=latest)
+
+More documentation and info at:
+* [gen_flask_pro.readthedocs.io](https://gen_flask_pro.readthedocs.io/en/latest/)
+* [www.python.org](https://www.python.org/)
+
+### Copyright and Licence
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+Copyright (C) 2017 by [vroncevic.github.io/gen_flask_pro](https://vroncevic.github.io/gen_flask_pro)
+
+**gen_flask_pro** is free software; you can redistribute it and/or modify
+it under the same terms as Python itself, either Python version 2.x/3.x or,
 at your option, any later version of Python 3 you may have available.
 
-:sparkles:
+Lets help and support PSF.
+
+[![Python Software Foundation](https://raw.githubusercontent.com/vroncevic/gen_flask_pro/dev/docs/psf-logo-alpha.png)](https://www.python.org/psf/)
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://psfmember.org/index.php?q=civicrm/contribute/transact&reset=1&id=2)
