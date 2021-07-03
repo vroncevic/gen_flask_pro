@@ -81,8 +81,6 @@ You can use docker to create image/container.
 
 * [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
 
-### Generation flow of py module
-
 Base flow of generation process:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_flask_pro/dev/docs/gen_flask_pro_flow.png)
