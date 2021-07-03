@@ -21,7 +21,6 @@ other information that should be provided before the modules are installed.
     - [Install using setuptools](#install-using-setuptools)
     - [Install using docker](#install-using-docker)
 - [Dependencies](#dependencies)
-- [Generation flow of py module](#generation-flow-of-py-module)
 - [Tool structure](#tool-structure)
 - [Docs](#docs)
 - [Copyright and Licence](#copyright-and-licence)
