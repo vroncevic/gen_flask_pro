@@ -2,7 +2,7 @@
 
 # Generate Flask Project
 
-☯️ **gen_flask_pro** is tool for generation of flask project.
+☯️ **gen_flask_pro** is tool for generation of flask app project.
 
 Developed in 🐍 **[python](https://www.python.org/)** code.
 
