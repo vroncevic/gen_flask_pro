@@ -1,2 +1,12 @@
 global-exclude *.py[cod]
 global-exclude *.editorconfig
+include gen_flask_pro/conf/gen_flask_pro.cfg
+include gen_flask_pro/conf/gen_flask_pro.logo
+include gen_flask_pro/conf/gen_flask_pro_util.cfg
+include gen_flask_pro/conf/template/generator_test.template
+include gen_flask_pro/__init__.py
+include gen_flask_pro/log/gen_flask_pro.log
+include gen_flask_pro/pro/__init__.py
+include gen_flask_pro/pro/read_template.py
+include gen_flask_pro/pro/write_template.py
+include gen_flask_pro/run/gen_flask_pro_run.py
